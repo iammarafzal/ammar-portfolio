@@ -1,20 +1,30 @@
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
-// Toggle menu
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('fa-xmark');
+// Toggle menu open/close
+const toggleMenu = () => {
+    menuIcon.classList.toggle('fa-xmark');  // cross
+    menuIcon.classList.toggle('fa-bars');   // hamburger
     navbar.classList.toggle('active');
+    // update ARIA state for accessibility
+    const expanded = navbar.classList.contains('active');
+    menuIcon.setAttribute('aria-expanded', expanded ? 'true' : 'false');
 };
+menuIcon.onclick = toggleMenu;
+menuIcon.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+    }
+});
 
-let sections = document.querySelectorAll('section');
-let navlinks = document.querySelectorAll('header nav a');
-let header = document.querySelector('header');
-
-// Scroll events
+// Close navbar when scrolling
 window.onscroll = () => {
     let top = window.scrollY;
+    let sections = document.querySelectorAll('section');
+    let navlinks = document.querySelectorAll('header nav a');
 
+    // highlight active section
     sections.forEach(sec => {
         let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
@@ -22,17 +32,28 @@ window.onscroll = () => {
 
         if (top >= offset && top < offset + height) {
             navlinks.forEach(link => link.classList.remove('active'));
-            document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+            document
+                .querySelector('header nav a[href*=' + id + ']')
+                .classList.add('active');
         }
     });
 
-    // Sticky header
-    header.classList.toggle('sticky', window.scrollY > 100);
-
-    // Close navbar on scroll (mobile)
-    menuIcon.classList.remove('fa-xmark');
+    // close navbar on scroll
     navbar.classList.remove('active');
+    menuIcon.classList.remove('fa-xmark');
+    menuIcon.classList.add('fa-bars');
 };
+
+// Close on nav link click (mobile)
+document.querySelectorAll('.navbar a').forEach(link => {
+    link.addEventListener('click', () => {
+        navbar.classList.remove('active');
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+    });
+});
+
+
 
 
 ScrollReveal({

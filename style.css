@@ -54,6 +54,19 @@ section {
     cursor: default;
 }
 
+
+/* ====== NAV BAR ======  */
+#menu-icon {
+    font-size: 3.5rem;
+    color: var(--accent-color);
+    display: none;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+}
+
 .navbar a {
     font-size: 1.5rem;
     color: var(--text-color);
@@ -65,12 +78,7 @@ section {
     color: var(--hover-color);
 }
 
-#menu-icon {
-    font-size: 3.5rem;
-    color: var(--main-color);
-    display: none;
-}
-
+/* ====== NAV BAR ======  */
 .home {
     display: flex;
     justify-content: center;
