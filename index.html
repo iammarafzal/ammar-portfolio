@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Ammar Afzal | AI & Web Development Portfolio</title>
     <meta name="keywords" content="Ammar Afzal, AI Engineer, Machine Learning, Web Developer, Data Science, Portfolio, Python, Flask, MySQL, GitHub Projects">
@@ -51,14 +51,14 @@
 
             <!-- <div class="btn" download ></div> -->
         </div>
-        <div class="home-img"><img src="images/main1.png" alt=""></div>
+        <div class="home-img"><img src="images/ammar-circle-photo.png" alt=""></div>
       </section>
 
       <!-- ABOUT SECTION  -->
         <section id="about" class="about">
             <!-- About Image -->
             <div class="about-img">
-                <img src="images/about-us.png" alt="AI Web and App Developer">
+                <img src="images/ammar-bordered-image.png" alt="AI Web and App Developer">
             </div>
 
             <!-- About Content -->
@@ -206,18 +206,13 @@
                 I am open to internships, freelance work, and collaborations. 
                 Let’s connect to build something impactful!
             </p>
-            
-            <form action="#">
-                <div class="input-box">
-                    <input type="text" name="" id="" placeholder="Full Name">
-                    <input type="email" name="" id="" placeholder="Email Address">
-                </div>
-                <div class="input-box">
-                    <input type="number" name="" id="" placeholder="Mobile Number">
-                    <input type="text" placeholder="Email Subject">
-                </div>
-                <textarea name="" id="" cols="30" rows="7" placeholder="Message Here..."></textarea>
-                <input type="submit" class="btn" value="Send Message">
+            <form action="https://script.google.com/macros/s/AKfycbyYLbXqZhjXQefUODxxjlfE-IYLayfHa00AU5XbXCIDXKxtKynYbf086jFGvSta60DA/exec" id="contactForm" method="post">
+                <input type="text" name="name" id="" placeholder="Full Name" required>
+                <input type="email" name="email" id="" placeholder="Email Address" required>                    
+                <input type="text" name="subject" placeholder="Email Subject" required>
+                <textarea name="message" id="" cols="30" rows="7" placeholder="Message Here..." required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+                <p id="form-status" role="status" aria-live="polite" style="margin-top:1rem;"></p>
             </form>
          </section>
 
@@ -231,36 +226,34 @@
             </div>
           </footer>
 
+          <!-- JS PATHS -->
     <script type="application/ld+json">
     {
     "@context": "https://schema.org/",
     "@type": "Person",
     "name": "Ammar Afzal",
     "url": "https://iammarafzal.github.io/",
-    "image": "https://iammarafzal.github.io/images/main1.png",
+    "image": "https://iammarafzal.github.io/images/ammar-circle-photo.png",
     "sameAs": [
         "https://www.linkedin.com/in/ammar-afzal277",
         "https://github.com/iammarafzal",
         "https://www.instagram.com/ammar_afzal277",
         "https://web.facebook.com/ammar.afzal277"
     ],
-    "jobTitle": "Computer Science Student | AI & Web Developer",
+    "jobTitle": "Computer Science Student | AI & ML Aspirant",
     "worksFor": {
         "@type": "Organization",
-        "name": "University Student Projects"
+        "name": "Ammar Afzal"
     },
     "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Your University Name"
+        "@type": "University",
+        "name": "National University of Modern Languages, Islamabad"
     }
     }
     </script>
-
-         
-          
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script src="script.js"></script>
+    <script src="static/script.js"></script>
     <script src="https://kit.fontawesome.com/45ec51dd39.js" crossorigin="anonymous"></script>
 </body>
 </html>

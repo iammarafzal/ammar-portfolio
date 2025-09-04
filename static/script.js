@@ -53,9 +53,6 @@ document.querySelectorAll('.navbar a').forEach(link => {
     });
 });
 
-
-
-
 ScrollReveal({
     distance: '80px',
     duration: 2000,
@@ -78,3 +75,57 @@ const typed = new Typed('.multiple-text', {
     loop: true
 });
 
+
+// ====== CONTACT FORM ======
+// Send Message 
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("form-status");
+
+// Listen for the form submission
+contactForm.addEventListener("submit", async function(e) {
+    // Prevent the default form submission behavior
+    e.preventDefault();
+
+    // Set the status to indicate sending
+    formStatus.textContent = "Sending...";
+    formStatus.classList.remove("text-green-500", "text-red-500");
+    formStatus.classList.add("text-blue-400");
+    
+    const form = e.target;
+    
+    try {
+        const formData = new FormData(form);
+        
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+        });
+        
+        if (response.ok) {
+            formStatus.textContent = "✅ Message sent successfully!";
+            formStatus.classList.remove("text-blue-400", "text-red-500");
+            formStatus.classList.add("text-green-500");
+            form.reset();
+            // Call the hide function after a delay for success
+            setTimeout(hideStatus, 5000); // Hides after 5 seconds
+        } else {
+            formStatus.textContent = "❌ Failed to send. Please try again.";
+            formStatus.classList.remove("text-blue-400", "text-green-500");
+            formStatus.classList.add("text-red-500");
+            // Call the hide function after a delay for error
+            setTimeout(hideStatus, 5000); // Hides after 5 seconds
+        }
+    } catch (err) {
+        console.error("Network or API error:", err);
+        formStatus.textContent = "⚠️ Network error. Please check your connection.";
+        formStatus.classList.remove("text-blue-400", "text-green-500");
+        formStatus.classList.add("text-red-500");
+        // Call the hide function after a delay for network error
+        setTimeout(hideStatus, 5000); // Hides after 5 seconds
+    }
+});
+
+function hideStatus() {
+    formStatus.textContent = "";
+    formStatus.classList.remove("text-blue-400", "text-green-500", "text-red-500");
+}
